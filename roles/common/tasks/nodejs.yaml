@@ -1,9 +1,6 @@
-- name: Install EPEL repository (if not already installed)
-  ansible.builtin.yum:
-    name: epel-release
-    state: present
-
-- name: Install Node.js
-  ansible.builtin.yum:
-    name: nodejs
-    state: present
+- name: Install Node.js using curl and yum
+  ansible.builtin.shell: |
+        curl -sL https://rpm.nodesource.com/setup_lts.x | sudo bash -
+        sudo yum install -y nodejs
+  args:
+    executable: /bin/bash
