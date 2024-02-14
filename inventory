@@ -1,8 +1,8 @@
 [mongodb]
-mongodb.joindevops.online
+172.31.13.118
 
 [catalogue]
-catalogue.joindevops.online
+172.31.23.152
 
 [web]
 web.joindevops.online
