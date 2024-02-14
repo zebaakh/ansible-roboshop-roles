@@ -1,7 +1,9 @@
-- name: setup NPM source
-  ansible.builtin.shell: "curl -sL https://rpm.nodesource.com/setup_lts.x | bash"
+- name: Install EPEL repository (if not already installed)
+  ansible.builtin.yum:
+    name: epel-release
+    state: present
 
-- name: Install NodeJS
+- name: Install Node.js
   ansible.builtin.yum:
     name: nodejs
-    state: installed
+    state: present
