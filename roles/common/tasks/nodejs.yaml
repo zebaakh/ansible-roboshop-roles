@@ -1,6 +1,27 @@
-- name: Install Node.js using curl and yum
-  ansible.builtin.shell: |
-        curl -sL https://rpm.nodesource.com/setup_lts.x | sudo bash -
-        sudo yum install -y nodejs
-  args:
-    executable: /bin/bash
+- name: Installing Roboshop project
+  hosts: all
+  gather_facts: yes
+  become: yes
+  tasks:
+    - name: Install NVM prerequisites
+      ansible.builtin.yum:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - git
+        - gcc-c++
+        - make
+        - openssl-devel
+        - wget
+
+    - name: Install NVM
+      ansible.builtin.shell: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash"
+
+    - name: Load NVM script
+      ansible.builtin.shell: |
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+    - name: Install Node.js LTS version
+      ansible.builtin.shell: "nvm install --lts"
