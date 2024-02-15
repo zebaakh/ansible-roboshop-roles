@@ -1,7 +1,8 @@
-- name: Setup Node.js repository
-  ansible.builtin.shell: "curl -sL https://rpm.nodesource.com/setup_lts.x | bash"
-
-- name: Install Node.js and its dependencies
-  ansible.builtin.yum:
-    name: nodejs
-    state: installed
+    - name: Install Node.js using NVM
+      shell: |
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+        nvm install 14.17.0  # Specify the Node.js version you want to install
+      args:
+        executable: /bin/bash
