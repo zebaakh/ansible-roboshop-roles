@@ -42,10 +42,3 @@
         src: payment.service
         dest: /etc/systemd/system/payment.service
       notify: Restart payment service
-
-  handlers:
-    - name: Restart payment service
-      ansible.builtin.systemd:
-        name: payment
-        state: restarted
-        enabled: yes
