@@ -29,3 +29,11 @@
     nvm use --lts
   environment:
     NVM_DIR: "$HOME/.nvm"
+
+- name: Change directory to the location of package.json
+  ansible.builtin.cd:
+    path: "/path/to/your/project"
+
+- name: Install dependencies
+  ansible.builtin.shell:
+    cmd: npm install
