@@ -14,7 +14,7 @@
     state: directory
 
 - name: Change working directory to /app
-  ansible.builtin.shell: cd /app
+  ansible.builtin.command: cd /app
 
 - name: Install dependencies
   ansible.builtin.command: mvn clean package
