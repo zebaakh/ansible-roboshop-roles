@@ -5,25 +5,25 @@
 172.31.23.152
 
 [web]
-web.joindevops.online
+172.31.87.8
 
 [redis]
-redis.joindevops.online
+172.31.93.242
 
 [user]
-user.joindevops.online
+172.31.91.171
 
 [cart]
-cart.joindevops.online
+172.31.87.137
 
 [mysql]
-mysql.joindevops.online
+172.31.4.90
 
 [shipping]
-shipping.joindevops.online
+172.31.82.209
 
 [rabbitmq]
-rabbitmq.joindevops.online
+172.31.80.27
 
 [payment]
-payment.joindevops.online
+172.31.92.154
