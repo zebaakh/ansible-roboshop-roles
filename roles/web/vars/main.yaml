@@ -1,5 +1,5 @@
-CATALOGUE_HOST: catalogue.joindevops.online
-USER_HOST: user.joindevops.online
-SHIPPING_HOST: shipping.joindevops.online
-CART_HOST: cart.joindevops.online
-PAYMENT_HOST: payment.joindevops.online
+CATALOGUE_HOST: 172.31.23.152
+USER_HOST: 172.31.91.171
+SHIPPING_HOST: 172.31.82.209
+CART_HOST: 172.31.87.137
+PAYMENT_HOST: 172.31.92.154
