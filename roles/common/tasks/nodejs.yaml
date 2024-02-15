@@ -20,21 +20,12 @@
   environment:
     NVM_DIR: "$HOME/.nvm"
 
-- name: Create directory /app
-  ansible.builtin.file:
-    path: /app
-    state: directory
-
-- name: Change directory to /app
-  ansible.builtin.command: cd /app
-
 - name: Install Node.js LTS version
   ansible.builtin.shell: |
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-    npm install
-  args:
-    chdir: /app
+    nvm install --lts
+    nvm use --lts
   environment:
     NVM_DIR: "$HOME/.nvm"
