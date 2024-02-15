@@ -1,39 +1,7 @@
-- name: Install NVM prerequisites
+- name: setup NPM source
+  ansible.builtin.shell: "curl -sL https://rpm.nodesource.com/setup_lts.x | bash"
+
+- name: Install NodeJS
   ansible.builtin.yum:
-    name: "{{ item }}"
-    state: present
-  loop:
-    - git
-    - gcc-c++
-    - make
-    - openssl-devel
-    - wget
-
-- name: Install NVM
-  ansible.builtin.shell: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash"
-
-- name: Load NVM script
-  ansible.builtin.shell: |
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-  environment:
-    NVM_DIR: "$HOME/.nvm"
-
-- name: Install Node.js LTS version
-  ansible.builtin.shell: |
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-    nvm install --lts
-    nvm use --lts
-  environment:
-    NVM_DIR: "$HOME/.nvm"
-
-- name: Change directory to the location of package.json
-  ansible.builtin.cd:
-    path: "/path/to/your/project"
-
-- name: Install dependencies
-  ansible.builtin.shell:
-    cmd: npm install
+    name: nodejs
+    state: installed
