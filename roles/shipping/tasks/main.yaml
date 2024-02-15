@@ -13,8 +13,11 @@
     path: /app
     state: directory
 
-- name: Change working directory to /app
-  ansible.builtin.command: cd /app
+- name: Clone the shipping repository
+  ansible.builtin.git:
+    repo: "https://github.com/zebaakh/ansible-roboshop-roles.git"
+    dest: "/app"
+    clone: yes
 
 - name: Install dependencies
   ansible.builtin.command: mvn clean package
