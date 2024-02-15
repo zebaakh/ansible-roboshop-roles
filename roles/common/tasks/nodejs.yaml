@@ -1,8 +1,18 @@
-- name: Install Node.js using NVM
+- name: Install NVM (Node Version Manager)
+  become: true
+  shell: |
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
+- name: Load NVM script
+  become: true
   shell: |
     export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # Source NVM script
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-    nvm install 14.17.0  # Specify the Node.js version you want to install
+
+- name: Install Node.js using NVM
+  become: true
+  shell: |
+    nvm install 14.17.0
   args:
     executable: /bin/bash
