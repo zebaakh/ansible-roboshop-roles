@@ -25,12 +25,16 @@
     path: /app
     state: directory
 
+- name: Change directory to /app
+  ansible.builtin.command: cd /app
+
 - name: Install Node.js LTS version
   ansible.builtin.shell: |
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-    cd /app
-    nvm install --lts
+    npm install
+  args:
+    chdir: /app
   environment:
     NVM_DIR: "$HOME/.nvm"
