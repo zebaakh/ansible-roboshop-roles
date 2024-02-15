@@ -13,12 +13,15 @@
     path: /app
     state: directory
 
-- name: install dependencies
+- name: Change working directory to /app
+  ansible.builtin.shell: cd /app
+
+- name: Install dependencies
   ansible.builtin.command: mvn clean package
   args:
     chdir: /app
 
-- name: rename jar file
+- name: Rename jar file
   ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar
   args:
     chdir: /app
@@ -28,7 +31,7 @@
     name: common
     tasks_from: load-mysql-schema
 
-- name: start application
+- name: Start application
   ansible.builtin.import_role:
     name: common
     tasks_from: systemd-setup
